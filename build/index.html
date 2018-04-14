@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lab 1</title>
+</head>
+<body style="background-color: white;">
+  <div id="taskInfo">
+    <form action="tasks.html" method="POST">
+      <div id="credentials" class="col-md-12">
+      	<br><br>
+        Name "To-Do" Task: <input type="text" name="task" /><br><br>
+        Task Description: <br> <textarea rows = "7" cols = "38" name = "description" >
+         </textarea><br><br>
+         Performed On:   
+         <input type = "checkbox" name = "day" value = "Sunday"> Sun
+         <input type = "checkbox" name = "day" value = "Monday"> Mon
+         <input type = "checkbox" name = "day" value = "Tuesday"> Tue
+         <input type = "checkbox" name = "day" value = "Wednesday"> Wed
+         <input type = "checkbox" name = "day" value = "Thursday"> Thur
+         <input type = "checkbox" name = "day" value = "Friday"> Fri
+         <input type = "checkbox" name = "day" value = "Saturday"> Sat
+         <br><br>
+        Time Requirement:<input type="text" name="time" style="margin-left: 22px;" /><br><br>
+        Task assigned to:<input name="person" style="margin-left: 29px;" /><br>
+        <input type="submit"><br><br>
+      </div>
+    </form>
+    <form action="tasks.html" method="GET"><p>Enter name of person to view all tasks assigned to that person. Leave blank to return all tasks in the list.</p>
+      Name of person:<input name="assignedTo" style="margin-left: 29px;" />
+        <input type="submit"><br><br>
+    </form>
+    <form action="taskadmin.html" method="GET">Click submit to return number of tasks in the list
+        <input type="submit" name="numTasks"><br><br>
+    </form>
+    <form action="taskadmin.html" method="DELETE">Enter name of task and click submit to delete from list.
+      <input type="text" name="task" style="margin-left: 22px;" />
+      <input type="submit">
+    </form>
+  </div>
+</body>
+</html>
