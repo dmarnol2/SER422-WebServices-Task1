@@ -7,8 +7,8 @@
   <description>Lab4 for SER422</description>
   
   <servlet>
-    <servlet-name>WeatherClient</servlet-name>
-    <servlet-class>WeatherClient</servlet-class>
+    <servlet-name>WeatherServlet</servlet-name>
+    <servlet-class>org.tempuri.WeatherServlet</servlet-class>
     	<load-on-startup>1</load-on-startup>
   </servlet>
 
@@ -26,7 +26,7 @@
 -->
   
   <servlet-mapping>
-    <servlet-name>WeatherClient</servlet-name>
+    <servlet-name>WeatherServlet</servlet-name>
     <url-pattern>/weather</url-pattern>
     
   </servlet-mapping>
