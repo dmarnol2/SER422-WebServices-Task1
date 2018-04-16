@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 public class WeatherServlet extends HttpServlet {
@@ -37,8 +40,8 @@ public class WeatherServlet extends HttpServlet {
 		}
 		public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException{
 			//String text = "some text";
-			res.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-    res.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		
+			
     //res.getWriter().write(text); 
 
 			//StringBuilder sb = new StringBuilder("<html><head></head><body>");
@@ -56,16 +59,41 @@ public class WeatherServlet extends HttpServlet {
 			else {//(req.getParameterMap().containsKey("tenday")){
 			ret = client.getWeather_tenDays(req.getParameter("city"), req.getParameter("state"), true);
 			}
-			
+			//JSONArray json = new JSONArray(ret);
+			//json = JSONparse(ret);
+			//json = JSON.parse(ret);
+			//String json = new Gson().toJson(ret);
+			//String x = ret.response.version;
+			//String x = json.response;
+    res.setContentType("application/json");
+    res.setCharacterEncoding("UTF-8");
+    //res.getWriter().write(res.getParameter("current_observation"));
 			//res.addProperty("success", true);
 			
 			//sb.append("<div  id='resBox'>");
 			//sb.append("<p>HERE I AM</p>"+ret);
 			//sb.append("</div>");
 			//sb.append("</body></html>");
+    JSONParser parser=new JSONParser();
+    JSONObject jobj=null;
+    //JSONArray array=null;
+		String array="";
+		try {
+			jobj =   (JSONObject) parser.parse(client.getWeather("Indianapolis", "Indiana"));//(JSONObject) parser.parse(ret);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		array =  jobj.get("current_observation").toString();
+	
 
-		pw.write(ret);
-		res.getWriter().write(ret);
+
+
+    //JSONObject jsonObject = new JSONObject(ret);
+	//	JSONArray age = jsonObject.getJSONArray("response");
+    	//String[] sa = ret.toArray();
+		//pw.write(age);
+		res.getWriter().write(array.toString());
 		//pw.println(ret.toString());
 
         pw.close();
@@ -76,5 +104,6 @@ public class WeatherServlet extends HttpServlet {
 
 
 	}
+
 
 
